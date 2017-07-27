@@ -1,0 +1,12 @@
+authors: [bram0101, MarvanCZ, QingChenW]
+database: false
+description: Lets players know what's the rules
+generator: http://dinnerbone.com/minecraft/tools/pluginator/
+main: qingchenw.repack.me.bram0101.guirules.GUIRules
+name: WCGUIRules
+startup: postworld
+version: '1.5'
+softdepend: [AuthMe]
+commands:
+    grules:
+       description: Customize the GUI.

@@ -1,0 +1,89 @@
+#tips:
+#   - you can use & in place of § to get color codes
+
+gui:
+    #amount of rows you can fill
+    rows: 1
+    #the displayname of the inventory
+    name: Rules
+    #this is a item. 0 is just something i use to be able to get all the data. 
+    #0 will mean nothing, but if you add another item, it must be 1 (1 higher then the last one, and the last one was 0, so 0 + 1 = 1)
+    0:
+        #the id of the item that is in the slot
+        id: 339
+        #the amount of items
+        amount: 1
+        #the data of items
+        data: 0
+        #the name of the item
+        name: Don't swear
+        #the lores
+        lores:
+            - If you swear, you get banned!
+            - For ever!
+            - And that's really bad!
+        #the enchantments that the item has (echantmentname:level)
+        enchantments:
+            - haste:1
+        #the slot it's in. the first slot is 0, and the second slot is 1.
+        slot: 0
+    #this is just item 0 copied, but 0 has been replaced with 1.
+    1:
+        id: 339
+        amount: 1
+        data: 0
+        name: Listen to the staff
+        lores:
+            - It's rude to don't listen to the staff!
+        enchantments:
+        slot: 1
+    2:
+        id: 339
+        amount: 1
+        data: 0
+        name: Don't hack
+        lores:
+            - If you hack, you just can't play a nice game.
+            - You will be banned for ever!
+        enchantments:
+        slot: 2
+    3:
+        id: 339
+        amount: 1
+        data: 0
+        name: Be nice to eachother
+        lores:
+            - If you are nice to others, they will be nice to you.
+            - If you aren't nice to others, you will be kicked/banned
+        enchantments:
+        slot: 3
+    #this is just like the previous items, but this is the agree button
+    agree:
+        id: 133
+        amount: 1
+        data: 0
+        name: Agree
+        lores:
+            - You agree with that you read all the rules,
+            - and that you will follow the rules.
+            - If you don't follow the rules, there can happen things!
+        enchantments:
+        slot: 7
+    #this is just like the previous items, but this is the disagree button.
+    disagree:
+        id: 152
+        amount: 1
+        data: 0
+        name: Disagree
+        lores:
+            - If you don't agree, you will be kicked until you agree.
+        enchantments:
+        slot: 8
+#this is the list with commands that will be ran as the console, when you click the agree button. 
+#%player% is the name of the player that clicked the agree button.
+agreecommands:
+    - tell %player% Thank you for agreeing the rules, we do this because we want everybody to know the rules and have fun!
+#this is the same as agreecommands, but this is when you click the disagree button.
+disagreecommands:
+    - kick %player% You must agree the rules, to be able to play on this server! we just want that players will have fun :(
+hidePlayer: true

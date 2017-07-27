@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="D:/games/github/服务器/Dawncraft Server/Develop/libs/craftbukkit-1.8.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://docs.windit.net/Chinese_BukkitAPI/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/games/github/服务器/Dawncraft Server/Develop/libs/AuthMe-5.3.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://ci.xephi.fr/job/AuthMeReloaded/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
