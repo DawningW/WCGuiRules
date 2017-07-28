@@ -1,5 +1,5 @@
 #tips:
-#   - you can use & in place of § to get color codes
+#   - you can use & in place of ยง to get color codes
 
 gui:
     #amount of rows you can fill
@@ -51,7 +51,7 @@ gui:
         id: 339
         amount: 1
         data: 0
-        name: Be nice to eachother
+        name: Be nice to each other
         lores:
             - If you are nice to others, they will be nice to you.
             - If you aren't nice to others, you will be kicked/banned

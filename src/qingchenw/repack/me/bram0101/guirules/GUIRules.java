@@ -9,6 +9,9 @@ import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -39,7 +42,35 @@ public class GUIRules extends JavaPlugin
 		if(!new File(this.getDataFolder(), "config.yml").exists()) this.saveDefaultConfig();
 		Bukkit.getPluginManager().registerEvents(new RulesListener(), this);
 		if(hasAuthme()) Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
+		this.reloadConfig();
+		this.getLogger().info("Wc's Gui Rules Plugin has been enabled! The authors were bram0101 and MarvanCZ, reload by QingChenW");
+	}
 
+	public void onDisable()
+	{
+		this.saveConfig();
+	}
+	
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
+	{
+    	if (command.getName().equalsIgnoreCase("guirules"))
+    	{
+    		if(sender instanceof ConsoleCommandSender)
+    		{
+    			this.reloadConfig();
+    			sender.sendMessage("[WCGUIRules] 插件配置重载完成!");
+    		}
+    		else
+    		{
+    			sender.sendMessage("[WCGUIRules] 此命令仅允许在控制台执行!");
+    		}
+    	}
+		return false;
+	}
+	
+	public void reloadConfig()
+	{
+		super.reloadConfig();
 		for(String uuid : this.getConfig().getStringList("players")) uuids.add(UUID.fromString(uuid));
 		String title = this.getConfig().getString("gui.name");
 		title = ChatColor.translateAlternateColorCodes('&', title.substring(0, title.length() >= 32 ? 31 : title.length()));
@@ -50,16 +81,16 @@ public class GUIRules extends JavaPlugin
 		}
 		this.setInventorySlot(rulegui, "agree");
 		this.setInventorySlot(rulegui, "disagree");
-
-		this.getLogger().info("Wc's Gui Rules Plugin has been enabled! The authors were bram0101 and MarvanCZ, reload by QingChenW");
 	}
-
-	public void onDisable()
+	
+	public void saveConfig()
 	{
-		this.getConfig().set("players", uuids);
-		this.saveConfig();
+		List<String> uuidstring = new ArrayList<String>();
+		for(UUID uuid : uuids) uuidstring.add(uuid.toString());
+		this.getConfig().set("players", uuidstring);
+		super.saveConfig();
 	}
-
+	
 	public void setInventorySlot(Inventory gui, String name)
 	{
 		try
@@ -167,6 +198,7 @@ public class GUIRules extends JavaPlugin
 				if(event.getRawSlot() == instance.getConfig().getInt("gui.agree.slot"))
 				{
 					instance.uuids.add(clickPlayer.getUniqueId());
+					instance.saveConfig();
 					event.getView().close();
 					if(instance.getConfig().getBoolean("hidePlayer"))
 					{
